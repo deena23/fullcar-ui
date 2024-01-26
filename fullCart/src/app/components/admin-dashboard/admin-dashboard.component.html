@@ -1,0 +1,38 @@
+<section class="admin-body">
+    <div class="admin-menu">
+        <div class="left">
+            <button mat-raised-button color="primary" (click)="addItems()">Add items in inventory</button>
+            <button mat-raised-button color="primary">Bulk Upload</button>
+        </div>
+        <div class="right">
+            <button mat-raised-button color="primary" (click)="addBrand()">Add/Update Brand</button>
+            <button mat-raised-button color="primary" (click)="addCategory()">Add/Update Category</button>
+        </div>
+    </div>
+    <div class="table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container *ngFor="let i of columnDetails;">
+                <ng-container *ngIf="i.key != 'icon'">
+                    <ng-container matColumnDef="{{i.key}}">
+                        <th mat-header-cell *matHeaderCellDef> {{i.value}} </th>
+                        <td mat-cell *matCellDef="let element"> {{element[i.key]}} </td>
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngIf="i.key == 'icon'">
+                    <ng-container matColumnDef="icon">
+                        <th mat-header-cell *matHeaderCellDef> Edit/Delete </th>
+                        <td mat-cell *matCellDef="let element"> 
+                            <p style="display: flex; gap: 1rem;">
+                                <mat-icon (click)="editItem(element)" style="cursor: pointer;">edit</mat-icon> 
+                                <mat-icon (click)="deleteItem(element)" style="cursor: pointer;">close</mat-icon>
+                            </p>
+                        </td>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </div>
+</section>

@@ -1,0 +1,42 @@
+<section class="login-main">
+    <div class="login-container">
+        <div class="header">
+            <p class="h3">Welcome to FullCart</p>
+            <p class="h6">Please Login</p>
+        </div>
+        <form [formGroup]="loginForm">
+            <div class="inputs">
+                <mat-form-field appearance="outline" floatLabel="always"> 
+                    <mat-label class="label">
+                        <ng-container *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
+                            Please provide a valid username
+                        </ng-container>
+                        <ng-container *ngIf="loginForm.controls['username'].valid || loginForm.controls['username'].untouched">
+                            username
+                        </ng-container>
+                    </mat-label>                   
+                    <input matInput type="text" formControlName="username">
+                </mat-form-field>
+                
+            </div>
+            <div class="inputs">               
+                <mat-form-field appearance="outline" floatLabel="always"> 
+                    <mat-label class="label">
+                        <ng-container *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+                            Password length must be 8 or more
+                        </ng-container>
+                        <ng-container *ngIf="loginForm.controls['password'].valid || loginForm.controls['password'].untouched">
+                            password
+                        </ng-container>
+                    </mat-label>                 
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                    <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="formSubmit()">Login</button>
+        </form>
+    </div>
+</section>
+<ng-container *ngIf="apiLoader">
+    <spinner></spinner>
+</ng-container>

@@ -1,0 +1,12 @@
+<section>
+    <mat-icon style="margin-top: 2%; margin-left: 92%; cursor: pointer;" mat-dialog-close>close</mat-icon>
+    <div style="text-align: center;">
+        <ng-container *ngIf="data.type == 'error'">
+            <img src="../../../assets/img/error.png">
+        </ng-container>
+        <ng-container *ngIf="data.type == 'success'">
+            <img src="../../../assets/img/success.svg" height="40px">
+        </ng-container>
+        <p style="margin-top: 10px;">{{displayMsg}}</p>
+    </div>
+</section>

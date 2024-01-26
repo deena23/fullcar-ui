@@ -1,0 +1,23 @@
+.header-main{
+    width: 100%;
+    padding: .3rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left{
+        display: flex;
+        gap: 4rem;
+        .menu{
+            display: flex;
+            gap: 2rem;
+            p{
+                cursor: pointer;
+            }
+        }
+    }
+    .right{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}

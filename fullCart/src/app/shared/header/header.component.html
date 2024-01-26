@@ -1,0 +1,14 @@
+<div class="header-main">
+    <div class="left">
+        <p>Full Cart</p>
+        <div class="menu">
+            <ng-container *ngFor="let i of menu">
+                <p [routerLink]="i.route">{{i.title}}</p>
+            </ng-container>
+        </div>
+    </div>
+    <div class="right">
+        <p>Welcome {{userName}}</p>
+        <mat-icon (click)="logout()" style="cursor: pointer;">exit_to_app</mat-icon>
+    </div>
+</div>
